@@ -28,8 +28,8 @@ class LogMiddleware
             'request_method'       => $request->getMethod(),
             'ip_address'           => $request->ip(),
             'headers'              => json_encode([
-                'user-agent' => $headers['user-agent'],
-                'host'     => $headers['host'],
+                'user-agent' =>   $headers['user-agent'],
+                'host'       =>   $headers['host'],
             ]),
         ];
 
