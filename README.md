@@ -5,7 +5,16 @@
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling.
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-This projet utilizes `sanctum` for authentication for API authentication.
+This projet utilizes `sanctum` for API authentication.
+
+## Requirements
+
+-   PHP 8.4 or higher
+-   Composer
+-   Docker Desktop (optional)
+-   Laravel Sail (optional)
+-   MySQL 5.7 or higher
+-   Redis
 
 ## Running the project
 
