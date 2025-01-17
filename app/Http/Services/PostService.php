@@ -33,6 +33,7 @@ class PostService
     public function update(array $data, Post $post)
     {
         $authUser =  $this->userService->getAuthUser();
+        // Check if the post belongs to the currently logged in user
         if($authUser->id != $post->user_id){
             return false;
         }
@@ -42,6 +43,7 @@ class PostService
     public function delete(Post $post)
     {
         $authUser =  $this->userService->getAuthUser();
+        // Check if the post belongs to the currently logged in user
         if($authUser->id != $post->user_id){
             return false;
         }
