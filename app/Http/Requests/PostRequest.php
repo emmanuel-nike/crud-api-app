@@ -23,8 +23,7 @@ class PostRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'content' => 'required|email|unique:users',
-            'password' => 'required|string|min:6',
+            'content' => 'required|string',
         ];
     }
 }

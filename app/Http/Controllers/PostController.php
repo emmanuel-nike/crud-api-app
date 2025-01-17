@@ -16,7 +16,7 @@ class PostController extends Controller
         $this->postService = $postService;
     }
 
-    public function getPosts(Request $request)
+    public function index(Request $request)
     {
         $posts = $this->postService->getPosts($request->input('page', 1), $request->input('per_page', 15));
 
