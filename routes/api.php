@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/auth/register', [AuthController::class, 'register']);
 Route::post('/auth/token', [AuthController::class, 'generateToken']);
 
-Route::middleware(['auth:sanctum'])->group(function () {
+Route::middleware(['auth:sanctum', 'throttle:lim_user_10pm'])->group(function () {
     // Protected Auth API routes
     Route::get('/auth/user', [AuthController::class, 'getAuthUser']);
     Route::post('/auth/revoke', [AuthController::class, 'revokeAuthTokens']);
