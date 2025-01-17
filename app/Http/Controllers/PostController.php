@@ -16,6 +16,9 @@ class PostController extends Controller
         $this->postService = $postService;
     }
 
+    /**
+     * Get all posts
+     */
     public function index(Request $request)
     {
         $posts = $this->postService->getPosts($request->input('page', 1), $request->input('per_page', 15));
@@ -23,6 +26,9 @@ class PostController extends Controller
         return response()->json($posts, 200);
     }
 
+    /**
+     * Save a new post
+     */
     public function store(PostRequest $request)
     {
         $post = $this->postService->store($request->validated());
@@ -30,6 +36,9 @@ class PostController extends Controller
         return response()->json(['message' => 'Post created successfully', 'post' => $post], 201);
     }
 
+    /**
+     * Update a post
+     */
     public function update(PostRequest $request, Post $post)
     {
         $res = $this->postService->update($request->validated(), $post);
@@ -40,6 +49,9 @@ class PostController extends Controller
         return response()->json(['message' => 'Unauthorized action'], 400);
     }
 
+    /**
+     * Delete a post
+     */
     public function destroy(Post $post)
     {
         $res = $this->postService->delete($post);
