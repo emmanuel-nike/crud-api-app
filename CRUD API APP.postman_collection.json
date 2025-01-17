@@ -1,0 +1,1099 @@
+{
+	"info": {
+		"_postman_id": "306017c5-ce5e-4f98-a73c-717af78fb5ed",
+		"name": "CRUD API APP",
+		"description": "This is a brief documentation on the API endpoints for the CRUD API APP.\n\nThe endpoints are categorized into authentication endpoints and posts endpoint.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29545459",
+		"_collection_link": "https://red-shadow-635345.postman.co/workspace/Team-Workspace~c513a6c2-95c5-4d9a-826b-721cf1477802/collection/29545459-306017c5-ce5e-4f98-a73c-717af78fb5ed?action=share&source=collection_link&creator=29545459"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Get user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/auth/user",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"user"
+							]
+						},
+						"description": "This is used to get the authenticated user data"
+					},
+					"response": [
+						{
+							"name": "Get data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/auth/user",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.2"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 16:28:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"Emmanuel Test\",\n        \"email\": \"test@mail.com\",\n        \"email_verified_at\": null,\n        \"created_at\": \"2025-01-17T16:13:22.000000Z\",\n        \"updated_at\": \"2025-01-17T16:13:22.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/auth/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						},
+						"description": "This endpoint is used to register a new user. The name, email and password parameters are required."
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Emmanuel Test\",\n    \"email\": \"test@mail.com\",\n    \"password\": \"password123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/register",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.2"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 16:13:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User created successfully\",\n    \"user\": {\n        \"name\": \"Emmanuel Test\",\n        \"email\": \"test@mail.com\",\n        \"updated_at\": \"2025-01-17T16:13:22.000000Z\",\n        \"created_at\": \"2025-01-17T16:13:22.000000Z\",\n        \"id\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var get = pm.response.json();",
+									"pm.environment.set(\"token\", get.token);",
+									"pm.collectionVariables.set(\"token\", get.token);",
+									"",
+									"pm.test('Response status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// pm.test('Validate the success field is true', function () {",
+									"//     const responseData = pm.response.json();",
+									"//     pm.expect(responseData.success).to.be.true;",
+									"// });",
+									"",
+									"pm.test('Validate the \\'token\\' object is present in the response', function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData).to.have.property('token');",
+									"});",
+									"",
+									"pm.test('Validate the \\'user\\' object is present in the object', function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData).to.exist.and.to.have.property('user');",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@mail.com\",\r\n    \"password\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/token",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"token"
+							]
+						},
+						"description": "This endpoint is used to generate a new authentication token."
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"test@mail.com\",\r\n    \"password\": \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/token",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.2"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 16:23:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"3|sIaIcgb7exjfhY12AK63HX607vzjSIQfEyOC0WAu005de08c\",\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"Emmanuel Test\",\n        \"email\": \"test@mail.com\",\n        \"email_verified_at\": null,\n        \"created_at\": \"2025-01-17T16:13:22.000000Z\",\n        \"updated_at\": \"2025-01-17T16:13:22.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var get = pm.response.json();",
+									"pm.environment.set(\"token\", get.token);",
+									"pm.collectionVariables.set(\"token\", get.token);",
+									"",
+									"pm.test('Response status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// pm.test('Validate the success field is true', function () {",
+									"//     const responseData = pm.response.json();",
+									"//     pm.expect(responseData.success).to.be.true;",
+									"// });",
+									"",
+									"pm.test('Validate the \\'token\\' object is present in the response', function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData).to.have.property('token');",
+									"});",
+									"",
+									"pm.test('Validate the \\'user\\' object is present in the object', function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData).to.exist.and.to.have.property('user');",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@mail.com\",\r\n    \"password\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/token",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"token"
+							]
+						},
+						"description": "This endpoint revokes authentication tokens for logged in user."
+					},
+					"response": [
+						{
+							"name": "Logout",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/auth/revoke",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"revoke"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.2"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 16:31:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Tokens revoked successfully\"\n}"
+						}
+					]
+				}
+			],
+			"description": "This is a group of all authtication endpoints."
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Get posts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/posts?per_page=20&page=2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "20"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						},
+						"description": "This endpoint gets all posts.\n\nA successful POST request typically returns a list of posts and pagination data with `200 OK` response code."
+					},
+					"response": [
+						{
+							"name": "Get posts",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/posts?per_page=20&page=1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"posts"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "20"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.2"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 17:28:56 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 5,\n            \"user_id\": 1,\n            \"slug\": \"post1-title-4\",\n            \"title\": \"Post1 Title\",\n            \"content\": \"Post1 Content Here\",\n            \"created_at\": \"2025-01-17T17:28:27.000000Z\",\n            \"updated_at\": \"2025-01-17T17:28:27.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"user_id\": 1,\n            \"slug\": \"post1-title-3\",\n            \"title\": \"Post1 Title\",\n            \"content\": \"Post1 Content Here\",\n            \"created_at\": \"2025-01-17T17:28:26.000000Z\",\n            \"updated_at\": \"2025-01-17T17:28:26.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"user_id\": 1,\n            \"slug\": \"post1-title-2\",\n            \"title\": \"Post1 Title\",\n            \"content\": \"Post1 Content Here\",\n            \"created_at\": \"2025-01-17T17:27:37.000000Z\",\n            \"updated_at\": \"2025-01-17T17:27:37.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"user_id\": 1,\n            \"slug\": \"post1-title-1\",\n            \"title\": \"Post1 Title\",\n            \"content\": \"Post1 Content Here\",\n            \"created_at\": \"2025-01-17T17:27:34.000000Z\",\n            \"updated_at\": \"2025-01-17T17:27:34.000000Z\"\n        },\n        {\n            \"id\": 1,\n            \"user_id\": 1,\n            \"slug\": \"post1-title\",\n            \"title\": \"Post1 Title\",\n            \"content\": \"Post1 Content Here\",\n            \"created_at\": \"2025-01-17T17:27:28.000000Z\",\n            \"updated_at\": \"2025-01-17T17:27:28.000000Z\"\n        }\n    ],\n    \"first_page_url\": \"http://localhost/api/posts?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost/api/posts?page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Previous\",\n            \"active\": false\n        },\n        {\n            \"url\": \"http://localhost/api/posts?page=1\",\n            \"label\": \"1\",\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Next &raquo;\",\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://localhost/api/posts\",\n    \"per_page\": 20,\n    \"prev_page_url\": null,\n    \"to\": 5,\n    \"total\": 5\n}"
+						}
+					]
+				},
+				{
+					"name": "Post data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Post1 Title\",\n    \"content\": \"Post1 Content Here\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/posts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts"
+							]
+						},
+						"description": "This endpont creates a new post. The title and content are required parameters.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "Post data",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"title\": \"Post1 Title\",\n    \"content\": \"Post1 Content Here\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/posts",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.2"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 17:28:27 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Post created successfully\",\n    \"post\": {\n        \"title\": \"Post1 Title\",\n        \"content\": \"Post1 Content Here\",\n        \"user_id\": 1,\n        \"slug\": \"post1-title-4\",\n        \"updated_at\": \"2025-01-17T17:28:27.000000Z\",\n        \"created_at\": \"2025-01-17T17:28:27.000000Z\",\n        \"id\": 5\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Updated Post1 Title\",\n    \"content\": \"Updated Post1 Content Here\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/posts/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"posts",
+								"2"
+							]
+						},
+						"description": "This endpoint updates existing posts.\n\nA successful PUT request typically returns a `200 OK` response code."
+					},
+					"response": [
+						{
+							"name": "Update data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"title\": \"Updated Post1 Title\",\n    \"content\": \"Updated Post1 Content Here\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/posts/8",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"posts",
+										"8"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.2"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 22:04:56 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "10"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "8"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Post updated successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/posts/7",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"posts",
+								"7"
+							]
+						},
+						"description": "This endpoint deletes a post.\n\nA successful DELETE request typically returns a `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Delete data",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/posts/7",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"posts",
+										"7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.2"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 22:04:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "10"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "7"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Post deleted successfully\"\n}"
+						}
+					]
+				}
+			],
+			"description": "This contains endpoints that handle CRUD for posts."
+		},
+		{
+			"name": "Activity",
+			"item": [
+				{
+					"name": "Get activities",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/activities",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"activities"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get activities",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/activities",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"activities"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.2"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 21:49:54 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 5,\n            \"user_id\": 1,\n            \"user_name\": \"Emmanuel Test\",\n            \"ip_address\": \"192.168.65.1\",\n            \"headers\": \"{\\\"user-agent\\\":[\\\"PostmanRuntime\\\\/7.43.0\\\"],\\\"host\\\":[\\\"localhost\\\"]}\",\n            \"request_path\": \"/api/posts/5\",\n            \"request_method\": \"PUT\",\n            \"request_body\": \"{\\\"title\\\":\\\"Updated Post1 Title\\\",\\\"content\\\":\\\"Updated Post1 Content Here\\\"}\",\n            \"message\": \"Post updated successfully\",\n            \"response_body\": \"{\\\"message\\\":\\\"Post updated successfully\\\"}\",\n            \"errors\": null,\n            \"created_at\": \"2025-01-17T21:47:32.000000Z\",\n            \"updated_at\": \"2025-01-17T21:47:32.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"user_id\": 1,\n            \"user_name\": \"Emmanuel Test\",\n            \"ip_address\": \"192.168.65.1\",\n            \"headers\": \"{\\\"user-agent\\\":[\\\"PostmanRuntime\\\\/7.43.0\\\"],\\\"host\\\":[\\\"localhost\\\"]}\",\n            \"request_path\": \"/api/posts\",\n            \"request_method\": \"GET\",\n            \"request_body\": \"{\\\"per_page\\\":\\\"20\\\",\\\"page\\\":\\\"1\\\"}\",\n            \"message\": null,\n            \"response_body\": \"{\\\"current_page\\\":1,\\\"data\\\":[{\\\"id\\\":6,\\\"user_id\\\":2,\\\"slug\\\":\\\"post1-title-user2\\\",\\\"title\\\":\\\"Updated Post1 Title - User2\\\",\\\"content\\\":\\\"Updated Post1 Content Here - User2\\\",\\\"created_at\\\":\\\"2025-01-17T17:40:49.000000Z\\\",\\\"updated_at\\\":\\\"2025-01-17T17:41:12.000000Z\\\"},{\\\"id\\\"\",\n            \"errors\": null,\n            \"created_at\": \"2025-01-17T21:46:54.000000Z\",\n            \"updated_at\": \"2025-01-17T21:46:54.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"user_id\": 1,\n            \"user_name\": \"Emmanuel Test\",\n            \"ip_address\": \"192.168.65.1\",\n            \"headers\": \"{\\\"user-agent\\\":[\\\"PostmanRuntime\\\\/7.43.0\\\"],\\\"host\\\":[\\\"localhost\\\"]}\",\n            \"request_path\": \"/api/posts\",\n            \"request_method\": \"GET\",\n            \"request_body\": \"{\\\"per_page\\\":\\\"20\\\",\\\"page\\\":\\\"1\\\"}\",\n            \"message\": null,\n            \"response_body\": \"{\\\"current_page\\\":1,\\\"data\\\":[{\\\"id\\\":6,\\\"user_id\\\":2,\\\"slug\\\":\\\"post1-title-user2\\\",\\\"title\\\":\\\"Updated Post1 Title - User2\\\",\\\"content\\\":\\\"Updated Post1 Content Here - User2\\\",\\\"created_at\\\":\\\"2025-01-17T17:40:49.000000Z\\\"\",\n            \"errors\": null,\n            \"created_at\": \"2025-01-17T21:46:39.000000Z\",\n            \"updated_at\": \"2025-01-17T21:46:39.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"user_id\": null,\n            \"user_name\": null,\n            \"ip_address\": \"192.168.65.1\",\n            \"headers\": \"{\\\"user-agent\\\":[\\\"PostmanRuntime\\\\/7.43.0\\\"],\\\"host\\\":[\\\"localhost\\\"]}\",\n            \"request_path\": \"/api/auth/token\",\n            \"request_method\": \"POST\",\n            \"request_body\": \"{\\\"email\\\":\\\"test@mail.com\\\"}\",\n            \"message\": null,\n            \"response_body\": \"{\\\"token\\\":\\\"16|UEnmLUCzbjWQiISEDJgBvUA6jfhZ8TVP9Lu04OzT81269260\\\",\\\"user\\\":{\\\"id\\\":1,\\\"name\\\":\\\"Emmanuel Test\\\",\\\"email\\\":\\\"test@mail.com\\\",\\\"email_verified_at\\\":null,\\\"created_at\\\":\\\"2025-01-17T16:13:22.000000Z\\\",\\\"updated_at\\\":\\\"2025-01-17T16:13:22.000000Z\\\"}}\",\n            \"errors\": null,\n            \"created_at\": \"2025-01-17T21:43:52.000000Z\",\n            \"updated_at\": \"2025-01-17T21:43:52.000000Z\"\n        },\n        {\n            \"id\": 1,\n            \"user_id\": null,\n            \"user_name\": null,\n            \"ip_address\": \"192.168.65.1\",\n            \"headers\": \"{\\\"user-agent\\\":[\\\"PostmanRuntime\\\\/7.43.0\\\"],\\\"host\\\":[\\\"localhost\\\"]}\",\n            \"request_path\": \"/api/auth/token\",\n            \"request_method\": \"POST\",\n            \"request_body\": \"{\\\"email\\\":\\\"test@mail.com\\\"}\",\n            \"message\": null,\n            \"response_body\": \"{\\\"token\\\":\\\"15|C7QaSXYkKWNqrRNpbqsMKL1NSgpujm3AHZ9aeKcfbe83addc\\\",\\\"user\\\":{\\\"id\\\":1,\\\"name\\\":\\\"Emmanuel Test\\\",\\\"email\\\":\\\"test@mail.com\\\",\\\"email_verified_at\\\":null,\\\"created_at\\\":\\\"2025-01-17T16:13:22.000000Z\\\",\\\"updated_at\\\":\\\"2025-01-17T16:13:22.000000Z\\\"}}\",\n            \"errors\": null,\n            \"created_at\": \"2025-01-17T21:43:46.000000Z\",\n            \"updated_at\": \"2025-01-17T21:43:46.000000Z\"\n        }\n    ],\n    \"first_page_url\": \"http://localhost/api/activities?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost/api/activities?page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Previous\",\n            \"active\": false\n        },\n        {\n            \"url\": \"http://localhost/api/activities?page=1\",\n            \"label\": \"1\",\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Next &raquo;\",\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://localhost/api/activities\",\n    \"per_page\": 50,\n    \"prev_page_url\": null,\n    \"to\": 5,\n    \"total\": 5\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
